@@ -12,7 +12,7 @@ class Actions:
         pass
 
     def do_action1(self):
-        pass
+        print('trigger action 1')
 
     def do_action2(self):
-        pass
+        print('trigger action 2')

@@ -6,7 +6,7 @@
 $ git clone https://github.com/joosthoeks/home-automation.git
 ```
 
-### Install InfluxDB OSS v2 and InfluxDB Python Client:
+### Install InfluxDB OSS v2:
 
 [https://v2.docs.influxdata.com/v2.0/get-started/#start-with-influxdb-oss](https://v2.docs.influxdata.com/v2.0/get-started/#start-with-influxdb-oss)
 
@@ -39,10 +39,12 @@ $ sudo systemctl enable influxd.service
 $ sudo systemctl start influxd.service
 ```
 
+### Install InfluxDB Python Client:
+
 [https://github.com/influxdata/influxdb-client-python](https://github.com/influxdata/influxdb-client-python)
 
 ```
-$ sudo pip3 install influxdb-client
+$ [sudo] pip3 install influxdb-client
 ```
 
 ### Add cronjobs:
@@ -52,6 +54,8 @@ $ crontab -e
 ```
 
 ```
-@reboot sleep 60 && /usr/bin/python3 /home/USER/home-automation/logger.py &
-@reboot sleep 60 && /usr/bin/python3 /home/USER/home-automation/controller.py &
+@reboot sleep 60 && /usr/bin/python3.7 /home/USER/home-automation/logger.py &
+@reboot sleep 70 && /usr/bin/python3.7 /home/USER/home-automation/controller.py &
 ```
+
+### Reboot
