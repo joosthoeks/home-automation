@@ -16,8 +16,9 @@ $ tar xvfz influxdb_2.0.0-beta.10_linux_amd64.tar.gz
 $ sudo cp influxdb_2.0.0-beta.10_linux_amd64/{influx,influxd} /usr/local/bin/
 ```
 
-Make organisation: "test"
-Make bucket: "test"
+- Make organisation: "test"
+
+- Make bucket: "test"
 
 Make service file for run on boot:
 
@@ -39,13 +40,15 @@ $ sudo systemctl enable influxd.service
 $ sudo systemctl start influxd.service
 ```
 
-### Install InfluxDB Python Client:
-
-[https://github.com/influxdata/influxdb-client-python](https://github.com/influxdata/influxdb-client-python)
+### Install requirements:
 
 ```
-$ [sudo] pip3 install influxdb-client
+$ [sudo] pip3 install -r requirements.txt
 ```
+
+### Configuration:
+
+Modify config.ini
 
 ### Add cronjobs:
 

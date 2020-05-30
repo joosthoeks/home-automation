@@ -4,3 +4,5 @@
 # $ pip3 install influxdb-client
 influxdb-client
 
+# $ pip3 install pyserial
+pyserial
