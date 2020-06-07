@@ -48,22 +48,31 @@ class Logger:
 
         while True:
 
-            dummy0 = self.sensors.get_dummy_sensor0()
-            self.add_record('sensor', 'location', 'home', 'dummy0', dummy0, time.time_ns())
-            
-            dummy1 = self.sensors.get_dummy_sensor1()
-            self.add_record('sensor', 'location', 'home', 'dummy1', dummy1, time.time_ns())
+            try:
+                dummy0 = self.sensors.get_dummy_sensor0()
+                self.add_record('sensor', 'location', 'home', 'dummy0', dummy0, time.time_ns())
+                
+                dummy1 = self.sensors.get_dummy_sensor1()
+                self.add_record('sensor', 'location', 'home', 'dummy1', dummy1, time.time_ns())
 
-            p1_esmr5 = self.sensors.get_p1_esmr5()
-            nanos = time.time_ns()
-            for k, v in p1_esmr5.items():
-                self.add_record('p1', 'location', 'home', k, v, nanos)
+                p1_esmr5 = self.sensors.get_p1_esmr5()
+                nanos = time.time_ns()
+                for k, v in p1_esmr5.items():
+                    self.add_record('p1', 'location', 'home', k, v, nanos)
 
+            except Exception as e:
+                self.add_record('exception', 'location', 'home', 'run', 1, time.time_ns())
+                self.add_record('exception', 'location', 'home', 'msg', str(e), time.time_ns())
+                continue
 
-            # reduce high cpu usage with sleep one microsecond:
-#            time.sleep(.000001)
-            # reduce high cpu usage with sleep one millisecond:
-#            time.sleep(.001)
+            else:
+                self.add_record('exception', 'location', 'home', 'run', 0, time.time_ns())
+#                self.add_record('exception', 'location', 'home', 'msg', '', time.time_ns())
+
+                # reduce high cpu usage with sleep one microsecond:
+#                time.sleep(.000001)
+                # reduce high cpu usage with sleep one millisecond:
+#                time.sleep(.001)
 
 
 logger = Logger()
